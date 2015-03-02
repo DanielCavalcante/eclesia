@@ -1,0 +1,20 @@
+@(title: String)(content: Html)
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>@title</title>
+    </head>
+    <body>
+    	<div id="header">
+    		@header()
+    	</div>
+    	<div id="content">
+    		<div class="container">
+    			<div id="menu">
+    				@menu
+    			</div>
+		        @content
+    		</div>
+    	</div>
+    </body>
+</html>

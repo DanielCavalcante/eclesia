@@ -1,0 +1,1 @@
+target/universal/stage/bin/eclesia -Dhttp.port=80 -DapplyEvolutions.default=true -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=jdbc:postgresql:5432//bckbhdmmhvqmsg:MIaokM0q-s0XoqFLFNw8j57JEq@ec2-23-23-180-133.compute-1.amazonaws.com/d35ak2o3pt528u

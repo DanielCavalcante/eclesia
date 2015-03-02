@@ -1,0 +1,17 @@
+@(members:List[models.Member])
+@main(""){
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+		</tr>
+	</thead>
+	<tbody>
+	@for(member <- members) {
+		<tr>
+			<td>@member.getId()</td>
+		</tr>
+	}
+	</tbody>
+</table>
+}
