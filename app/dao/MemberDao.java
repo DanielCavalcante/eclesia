@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import models.Member;
@@ -15,7 +18,7 @@ public class MemberDao {
 
 	private Connection con;
 	
-	public MemberDao() throws SQLException {
+	public MemberDao() {
 		this.con = ConnectionJDBC.getInstance().getConnection();
 	}
 	
@@ -45,16 +48,41 @@ public class MemberDao {
 	}
 	
 	public void save(Member member) {
-		String sql = "INSERT INTO members VALUES (?, ?, ?, ?, ?, ?)";
+		String sqlMember = "INSERT INTO members (name, phone, email, ministry, conversion_date, birth_date, address_id)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
+		
+		String sqlAddress = "INSERT INTO addresses (street, cep, city, state) VALUES (?, ?, ?, ?)"; 
 		try {
-			PreparedStatement stm = this.con.prepareStatement(sql);
-			stm.setString(2, member.getName());
-			stm.setString(3, member.getPhone());
-			stm.setString(4, member.getEmail());
-			/* TODO
-			 * Falta os outros campos
-			 */
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			PreparedStatement stm = this.con.prepareStatement(sqlMember);
+			stm.setString(1, member.getName());
+			stm.setString(2, member.getPhone());
+			stm.setString(3, member.getEmail());
+			stm.setString(4, "Louvor");
+			
+			Date dataConversion = sdf.parse(member.getConversionDate());
+			Date dataBirthDate = sdf.parse(member.getBirthDate());
+			
+			stm.setDate(5, new java.sql.Date(dataConversion.getTime()));
+			stm.setDate(6, new java.sql.Date(dataBirthDate.getTime()));
+			
+			PreparedStatement stmAddress = this.con.prepareStatement(sqlAddress, Statement.RETURN_GENERATED_KEYS);
+			stmAddress.setString(1, member.getAddress().getStreet());
+			stmAddress.setString(2, member.getAddress().getCep());
+			stmAddress.setString(3, member.getAddress().getCity());
+			stmAddress.setString(4, member.getAddress().getState());
+			
+			System.out.println(member);
+			
+			stmAddress.execute();
+			
+			ResultSet rs = stmAddress.getGeneratedKeys();
+			rs.next();
+			Long addressId = rs.getLong(1);
+			
+			stm.setLong(7, addressId);
 			stm.execute();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

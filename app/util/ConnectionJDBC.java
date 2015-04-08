@@ -2,7 +2,6 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class ConnectionJDBC {
 
@@ -13,14 +12,14 @@ public class ConnectionJDBC {
 
 	}
 
-	public Connection getConnection() throws SQLException {
+	public Connection getConnection() {
 		try {
 			if (con == null || con.isClosed()) {
 				con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/eclesia",
 						"postgres", "root");
 			}
 		} catch (Exception e) {
-			throw new SQLException();
+			e.printStackTrace();
 		}
 
 		return con;

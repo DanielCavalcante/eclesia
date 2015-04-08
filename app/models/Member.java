@@ -1,17 +1,16 @@
 package models;
 
-import java.util.Date;
-
-public class Member{
+public class Member {
 
 	private Long id;
 	private String name;
 	private String phone;
 	private String email;
+	private String ministry;
+	private String conversionDate;
+	private String birthDate;
+	private String image;
 	private Address address;
-	private Ministry ministry;
-	private Date conversionDate;
-	private Date birthDate;
 
 	public Long getId() {
 		return id;
@@ -45,6 +44,38 @@ public class Member{
 		this.email = email;
 	}
 
+	public String getMinistry() {
+		return ministry;
+	}
+
+	public void setMinistry(String ministry) {
+		this.ministry = ministry;
+	}
+
+	public String getConversionDate() {
+		return conversionDate;
+	}
+
+	public void setConversionDate(String conversionDate) {
+		this.conversionDate = conversionDate;
+	}
+
+	public String getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public Address getAddress() {
 		return address;
 	}
@@ -53,28 +84,17 @@ public class Member{
 		this.address = address;
 	}
 
-	public Ministry getMinistry() {
-		return ministry;
-	}
-
-	public void setMinistry(Ministry ministry) {
-		this.ministry = ministry;
-	}
-
-	public Date getConversionDate() {
-		return conversionDate;
-	}
-
-	public void setConversionDate(Date conversionDate) {
-		this.conversionDate = conversionDate;
-	}
-
-	public Date getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
+	@Override
+	public String toString() {
+		return "Name: " + getName() + "\nPhone: " + getPhone() + "\nMail: "
+				+ getEmail() + "\nMinistry: " + getMinistry()
+				+ "\nConversion date: " + getConversionDate()
+				+ "\nBirth date: " + getBirthDate()
+				+ "\nImage: " + getImage()
+				+ "\nAdress" + "\nStreet: "
+				+ getAddress().getStreet() + "\nCEP: " + getAddress().getCep()
+				+ "\nCity: " + getAddress().getCity() + "\nState: "
+				+ getAddress().getState();
 	}
 
 }

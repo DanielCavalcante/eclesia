@@ -1,3 +1,31 @@
-@main("Eclesia - Cadastrar membro") {
+@main("Eclesia") {
+<legend>@Messages("user.new")</legend>
+<form class="form-horizontal" action="@routes.Users.save()" method="post">
+	<div class="well well-sm">
+		<label class="control-label">@Messages("user.information")</label>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">@Messages("user.name")</label>
+			<div class="col-sm-3">
+				<input name="name" value="" class="form-control">
+			</div>
+		</div>
 
+		<div class="form-group">
+			<label class="col-sm-2 control-label">@Messages("user.login")</label>
+			<div class="col-sm-3">
+				<input name="login" value="" class="form-control">
+			</div>			
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">@Messages("user.password")</label>
+			<div class="col-sm-3">
+				<input name="password" value="" class="form-control">
+			</div>
+		</div>
+	</div>
+	<div class="text-center">
+		<button onclick="submit" class="btn btn-success">@Messages("button.save")</button>
+		<a href="@routes.Users.list()" class="btn btn-default">@Messages("button.cancel")</a>
+	</div>
+</form>
 }

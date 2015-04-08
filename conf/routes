@@ -8,6 +8,13 @@ GET     /                           controllers.Application.index()
 # Members
 GET     /members					controllers.Members.list()
 GET     /members/create				controllers.Members.create()
+POST    /members/save				controllers.Members.save()
+
+# Users
+GET		/users						controllers.Users.list()
+GET		/users/create				controllers.Users.create()
+POST	/users/save					controllers.Users.save()
+GET		/users/edit/:id				controllers.Users.edit(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

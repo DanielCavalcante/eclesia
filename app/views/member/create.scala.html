@@ -1,3 +1,80 @@
 @main("Eclesia - Cadastrar membro") {
-
+<legend>@Messages("member.new")</legend>
+<form class="form-horizontal" action="@routes.Members.save()" method="post" enctype="multipart/form-data">
+	<div class="well well-sm">
+		<label class="control-label">@Messages("member.information")</label>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">@Messages("member.name")</label>
+			<div class="col-sm-3">
+				<input class="form-control" name="name" value="">
+			</div>
+			<label class="col-sm-2 control-label">@Messages("member.phone")</label>
+			<div class="col-sm-3">
+				<input class="form-control" name="phone" value="">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">@Messages("member.mail")</label>
+			<div class="col-sm-3">
+				<input class="form-control" name="email" value="">
+			</div>
+			<label class="col-sm-2 control-label">@Messages("member.birth.date")</label>
+			<div class="col-sm-3">
+				<input class="form-control" name="birthDate" value="" >
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">@Messages("member.conversion.date")</label>
+			<div class="col-sm-3">
+				<input class="form-control" name="conversionDate" value="">
+			</div>
+		</div>
+	</div>
+	<div class="well well-sm">
+		<label class="control-label">@Messages("address.information")</label>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">@Messages("address.cep")</label>
+			<div class="col-sm-3">
+				<input class="form-control" name="address.cep" value="">
+			</div>
+			<label class="col-sm-2 control-label">@Messages("address.street")</label>
+			<div class="col-sm-3">
+				<input class="form-control" name="address.street" value="">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">@Messages("address.city")</label>
+			<div class="col-sm-3">
+				<input class="form-control" name="address.city" value="">
+			</div>
+			<label class="col-sm-2 control-label">@Messages("address.state")</label>
+			<div class="col-sm-3">
+				<input class="form-control" name="address.state" value="">
+			</div>
+		</div>
+	</div>
+	
+	<div class="well well-sm">
+		<label class="control-label">@Messages("ministry")</label>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">@Messages("ministry.name")</label>
+			<div class="col-sm-3">
+				<select class="form-control">
+					<option value="Louvor">@Messages("opcion.select")</option>
+				</select>
+			</div>
+			<label class="col-sm-2 control-label">Imagem</label>
+			<div class="col-sm-3">
+				<input type="file" name="picture">
+			</div>
+		</div>
+	</div>
+	<div class="text-center">
+		<button onclick="submit" class="btn btn-success">@Messages("button.save")</button>
+		<a href="@routes.Members.list()" class="btn btn-default">@Messages("button.cancel")</a>
+	</div>
+</form>
 }

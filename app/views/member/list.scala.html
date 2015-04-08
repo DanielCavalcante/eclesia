@@ -1,17 +1,26 @@
 @(members:List[models.Member])
 @main(""){
-<table class="table">
-	<thead>
-		<tr>
-			<th>Id</th>
-		</tr>
-	</thead>
-	<tbody>
+	<a href="@routes.Members.create()" class="btn btn-default">@Messages("button.new")</a>
+	<br>
 	@for(member <- members) {
-		<tr>
-			<td>@member.getId()</td>
-		</tr>
+	<div class="text-center">
+		<div class="col-sm-12">
+		<div class="well well-sm col-sm-4" style="margin-right: 10px;">
+			<div class="media">
+				<div class="media-left media-middle">
+					<a href="#">
+						<img alt="" src="" class="media-object">	
+					</a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading"><a href="#">@member.getName()</a></h4>
+					<h5>@member.getPhone()</h5>				
+					<h5>@member.getBirthDate()</h5>
+					<h5>@member.getEmail()</h5>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
 	}
-	</tbody>
-</table>
 }

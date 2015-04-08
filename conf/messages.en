@@ -1,0 +1,37 @@
+#Others
+opcion.select=Select
+#Menus
+menu.home=Home
+menu.members=Members
+menu.ministeries=Ministeries
+menu.about=About
+menu.user=User
+menu.users=Users
+#Buttons
+button.new=New
+button.save=Save
+button.cancel=Cancel
+#Member
+member.information=Member information
+member.new=New member
+member.name=Name
+member.phone=Phone
+member.mail=Mail
+member.birth.date=Birth date
+member.conversion.date=Conversion date
+#
+address.information=Address information
+address.cep=CEP
+address.street=Street
+address.city=City
+address.state=State
+#Ministery
+ministry=Ministry
+ministry.name=Name
+#User
+user.new=New user
+user.information=User information
+user.name=Name
+user.login=Login
+user.password=Password
+user.confirm.password=Confirm password
