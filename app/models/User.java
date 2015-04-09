@@ -1,12 +1,18 @@
 package models;
 
+import play.data.validation.Constraints.Required;
+
 public class User {
 	
 	private Long id;
+	@Required
 	private String name;
+	@Required
 	private String login;
+	@Required
 	private String password;
 	private boolean root;
+	@Required
 	private String confirmPassword;
 	
 	public Long getId() {
@@ -48,8 +54,11 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "Id: " + getId() + "/n" + "Name: " + getName()
-				+ "/n Login : " + getLogin() + "/n Password: " + getPassword() + "/n Root: " + isRoot();
+		return "Id: " + getId() + 
+				"/n" + "Name: " + getName() + 
+				"/n Login : " + getLogin() + 
+				"/n Password: " + getPassword() + 
+				"/n Root: " + isRoot();
 	}
 
 }

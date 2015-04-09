@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Login;
 import models.User;
 import util.ConnectionJDBC;
 
@@ -16,6 +17,30 @@ private Connection con;
 	
 	public UserDao() {
 		this.con = ConnectionJDBC.getInstance().getConnection();
+	}
+	
+	public User authenticate(Login login) {
+		User u = null;
+		try {
+			PreparedStatement stm = this.con.prepareStatement("SELECT * FROM users WHERE login = ?");
+			stm.setString(1, login.getLogin());
+			ResultSet rs = stm.executeQuery();
+			
+			if (rs.next()) {
+				u.setId(rs.getLong("id"));
+				u.setName(rs.getString("name"));
+				u.setLogin(rs.getString("login"));
+				u.setPassword(rs.getString("password"));
+				u.setRoot(rs.getBoolean("root"));
+			}
+			
+			if (!login.getPassword().equals(u.getPassword()))
+				return null;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return u;
 	}
 	
 	public List<User> list() {
